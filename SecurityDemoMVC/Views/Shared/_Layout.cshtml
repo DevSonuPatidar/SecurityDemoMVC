@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style>
+        .navbar-brand{
+            font-size:30px;
+            font-weight:bolder;
+        }
+        .NavLinks {
+            text-decoration: none;
+            color: white;
+            padding-right: 10px;
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top bg-info">
+        <div class="container">
+            <div class="navbar-header ">
+                @Html.ActionLink("Employee Portal", "Login", "Accounts", new { area = "" }, new { @class = "navbar-brand text-white" })
+            </div>
+            <div class="navbar">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="text-black NavLinks ">Hello-@User.Identity.Name</a>
+                    @Html.ActionLink("GetEmployeeList", "Index", "Employees",null,new {@Style = "color:white; text-decoration:none; font-size:20px;padding-left:20px; padding-right:20px;" } ) 
+                    @Html.ActionLink("AddEmployee", "Create", "Employees",null, new { @Style = "color:white;text-decoration:none; font-size:20px; padding-right:20px;" })
+                    @Html.ActionLink("Logout", "Logout", "Accounts",null, new { @Style = "color:white;text-decoration:none; font-size:20px; padding-right:20px;" })
+                }
+                else
+                {
+                    <a>@Html.ActionLink("Login", "Login", "Accounts",null, new { @Style = "color:white;text-decoration:none; font-size:20px; padding-right:20px;" })</a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content " style="height:400px;">
+        @RenderBody()
+    </div>
+        <hr />
+        <footer class="container">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+   
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

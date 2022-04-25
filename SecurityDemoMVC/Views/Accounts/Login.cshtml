@@ -1,0 +1,94 @@
+﻿@model SecurityDemoMVC.Models.UserModel
+@{
+    ViewBag.Title = "Login";
+}
+@*<div class="col-sm-4"></div>
+<div class="container col-sm-4 mt-5 mb-5">
+    <div style="height:400px; width:400px; border:1px solid black; border-radius:5px; background-color:azure;">
+        <div>
+            <h2 class="text-center">Login</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 ">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal col-sm-12 ">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group" style="padding-left:60px;">
+                            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-12">
+                                @Html.TextBoxFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control " }})
+                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group "style="padding-left:60px;">
+                            @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-sm-12">
+                                @Html.TextBoxFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" }})
+                                @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group mt-3"style="padding-left:60px;">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Login" class="btn btn-default btn-info text-white" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div style="padding-left:60px; padding-top:10px;">
+                @Html.ActionLink("Click here to Signup", "Signup")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4"></div>
+*@
+
+<div class="section">
+    <div class="row mt-5 mb-5">
+        <div class="col-5 "></div>
+        <div class="col-2 border bg-info text-white" style="border-radius:10px;">
+            <div class="row text-center pt-3"><h3><b>LOGIN</b></h3></div>
+            @using (Html.BeginForm())
+            {
+                @*@Html.AntiForgeryToken()
+*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="row">
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-12">
+                            @Html.TextBoxFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control " } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="row">
+
+                        @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="col-sm-12">
+                            @Html.PasswordFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <input type="submit" value="Login" class="btn btn-default btn-success text-white mt-3" />
+                <div class="pb-3 pt-2">
+                    @Html.ActionLink("Click here to Signup", "Signup")
+                </div>
+            }
+        </div>
+        <div class="col-5"></div>
+    </div>
+</div>
